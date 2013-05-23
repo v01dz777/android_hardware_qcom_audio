@@ -145,6 +145,12 @@ LOCAL_SHARED_LIBRARIES := \
 	libdl \
 	libexpat
 
+ifneq ($(BOARD_AUDIO_AMPLIFIER),)
+    LOCAL_CFLAGS += -DUSES_AUDIO_AMPLIFIER
+    LOCAL_SHARED_LIBRARIES += libaudioamp
+    LOCAL_C_INCLUDES += $(BOARD_AUDIO_AMPLIFIER)
+endif
+
 LOCAL_C_INCLUDES += \
 	external/tinyalsa/include \
 	external/tinycompress/include \
