@@ -5,6 +5,7 @@ ifeq ($(strip $(BOARD_USES_ALSA_AUDIO)),true)
 # Any prebuilt files with default TAGS can use the below:
 include $(CLEAR_VARS)
 #LOCAL_SRC_FILES:= aplay.c alsa_pcm.c alsa_mixer.c
+LOCAL_CLANG := false
 LOCAL_SRC_FILES:= aplay.c
 LOCAL_MODULE:= aplay
 LOCAL_SHARED_LIBRARIES:= libc libcutils libalsa-intf
@@ -48,6 +49,7 @@ LOCAL_COPY_HEADERS_TO   := mm-audio/libalsa-intf
 LOCAL_COPY_HEADERS      := alsa_audio.h
 LOCAL_COPY_HEADERS      += alsa_ucm.h
 LOCAL_COPY_HEADERS      += msm8960_use_cases.h
+LOCAL_CLANG := false
 LOCAL_SRC_FILES:= alsa_mixer.c alsa_pcm.c alsa_ucm.c
 LOCAL_MODULE:= libalsa-intf
 LOCAL_MODULE_TAGS := optional

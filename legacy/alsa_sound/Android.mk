@@ -143,6 +143,8 @@ LOCAL_ARM_MODE := arm
 
 LOCAL_CFLAGS += $(common_cflags)
 
+LOCAL_CLANG := false
+
 LOCAL_SRC_FILES := \
   AudioHardwareALSA.cpp         \
   AudioStreamOutALSA.cpp        \
