@@ -38,6 +38,8 @@
 #include "sound/msmcal-hwdep.h"
 #endif
 
+#define UNUSED(a) ((void)(a))
+
 #define SOUND_TRIGGER_DEVICE_HANDSET_MONO_LOW_POWER_ACDB_ID (100)
 
 #define MIXER_XML_PATH "/system/etc/mixer_paths.xml"
@@ -1187,7 +1189,7 @@ int platform_switch_voice_call_usecase_route_post(void *platform,
     return ret;
 }
 
-int platform_start_voice_call(void *platform, uint32_t vsid __unused)
+int platform_start_voice_call(void *platform, uint32_t vsid)
 {
     struct platform_data *my_data = (struct platform_data *)platform;
     int ret = 0;
@@ -1196,6 +1198,7 @@ int platform_start_voice_call(void *platform, uint32_t vsid __unused)
 #ifdef NEW_CSDCLIENT
         ret = my_data->csd->start_voice(vsid);
 #else
+        UNUSED(vsid);
         ret = my_data->csd->start_voice();
 #endif
         if (ret < 0) {
@@ -1205,7 +1208,7 @@ int platform_start_voice_call(void *platform, uint32_t vsid __unused)
     return ret;
 }
 
-int platform_stop_voice_call(void *platform, uint32_t vsid __unused)
+int platform_stop_voice_call(void *platform, uint32_t vsid)
 {
     struct platform_data *my_data = (struct platform_data *)platform;
     int ret = 0;
@@ -1214,6 +1217,7 @@ int platform_stop_voice_call(void *platform, uint32_t vsid __unused)
 #ifdef NEW_CSDCLIENT
         ret = my_data->csd->stop_voice(vsid);
 #else
+        UNUSED(vsid);
         ret = my_data->csd->stop_voice();
 #endif
         if (ret < 0) {
